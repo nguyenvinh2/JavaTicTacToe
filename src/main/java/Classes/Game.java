@@ -3,18 +3,17 @@ package Classes;
 public class Game {
     public Player PlayerOne;
     public Player PlayerTwo;
-    public Player Winner;
     public Board Gameboard;
 
     public Game(Player P1, Player P2){
         PlayerOne = P1;
         PlayerTwo = P2;
-        Board GameBoard = new Board();
+        Gameboard = new Board();
     }
 
     public Player Play(){
         int count = 0;
-        while(CheckForWinner(Gameboard)){
+        while(CheckForWinner(Gameboard) == false && count<9){
             Gameboard.DisplayGameBoard();
             NextPlayer().TurnEvents(Gameboard);
             SwitchPlayer();
@@ -42,7 +41,7 @@ public class Game {
                 {3,6,9},
                 {1,5,9},
                 {3,5,7}
-      };
+        };
         for (int i = 0; i < winners.length; i++) {
             Position P1 = Player.PositionToNumber(winners[i][0]);
             Position P2 = Player.PositionToNumber(winners[i][1]);

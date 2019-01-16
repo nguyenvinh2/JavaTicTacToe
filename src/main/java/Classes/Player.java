@@ -37,8 +37,8 @@ public class Player {
             System.out.println("Please select a location");
             int n = reader.nextInt();
             coordinate = PositionToNumber(n);
+            reader.close();
         }
-        reader.close();
         return coordinate;
     }
     /*returns grid coordinates base on integer specified on game-board*/
@@ -58,7 +58,7 @@ public class Player {
     }
     public void TurnEvents(Board Gameboard){
         PlayerTurn = true;
-        System.out.println(Name+"!. It is your turn. Please select a space.");
+        System.out.println(Name+"!. It is your turn.");
         Position position = GetPosition();
         if(tryParseInt(Gameboard, position)){
             Gameboard.Board[position.Row][position.Column] = Marker;
