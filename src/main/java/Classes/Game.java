@@ -1,5 +1,7 @@
 package Classes;
 
+import java.io.IOException;
+
 public class Game {
     public Player PlayerOne;
     public Player PlayerTwo;
@@ -11,7 +13,7 @@ public class Game {
         Gameboard = new Board();
     }
 
-    public Player Play(){
+    public Player Play() throws IOException {
         int count = 0;
         while(CheckForWinner(Gameboard) == false && count<9){
             Gameboard.DisplayGameBoard();
@@ -26,21 +28,21 @@ public class Game {
         }
         else {
             Player NoWinner = new Player();
-            NoWinner.setName("There is no winner.");
+            NoWinner.setName("There is no winner");
             return NoWinner;
         }
     }
 
     public Boolean CheckForWinner(Board Gameboard){
-        int[][] winners = {
-                {1,2,3},
-                {4,5,6},
-                {7,8,9},
-                {1,4,7},
-                {2,5,8},
-                {3,6,9},
-                {1,5,9},
-                {3,5,7}
+        String[][] winners = {
+                {"1","2","3"},
+                {"4","5","6"},
+                {"7","8","9"},
+                {"1","4","7"},
+                {"2","5","8"},
+                {"3","6","9"},
+                {"1","5","9"},
+                {"3","5","7"}
         };
         for (int i = 0; i < winners.length; i++) {
             Position P1 = Player.PositionToNumber(winners[i][0]);

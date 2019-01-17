@@ -8,11 +8,11 @@ import Classes.Player;
 import Classes.Position;
 
 public class Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         PlayGame();
     }
 
-    public static void PlayGame() {
+    public static void PlayGame() throws IOException {
         Player PlayerOne = new Player();
         Player PlayerTwo = new Player();
 

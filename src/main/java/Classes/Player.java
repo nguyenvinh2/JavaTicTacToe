@@ -1,4 +1,7 @@
 package Classes;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Player {
@@ -26,37 +29,37 @@ public class Player {
         return PlayerTurn;
     }
 
-    public void setPlayerTurn(Boolean turnInput) {
+    public void setPlayerTurn (Boolean turnInput) {
         PlayerTurn = turnInput;
     }
     /*detects user inputs for position number an retrieves coordinates*/
-    public Position GetPosition () {
+    public Position GetPosition () throws IOException {
         Position coordinate =  null;
-        Scanner reader = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (coordinate == null) {
             System.out.println("Please select a location");
-            int n = reader.nextInt();
+
+            String n = reader.readLine();
             coordinate = PositionToNumber(n);
-            reader.close();
         }
         return coordinate;
     }
     /*returns grid coordinates base on integer specified on game-board*/
-    public static Position PositionToNumber(int position){
+    public static Position PositionToNumber(String position){
         switch (position){
-            case 1: return new Position(0,0);
-            case 2: return new Position(0,1);
-            case 3: return new Position(0,2);
-            case 4: return new Position(1,0);
-            case 5: return new Position(1,1);
-            case 6: return new Position(1,2);
-            case 7: return new Position(2,0);
-            case 8: return new Position(2,1);
-            case 9: return new Position(2,2);
+            case "1": return new Position(0,0);
+            case "2": return new Position(0,1);
+            case "3": return new Position(0,2);
+            case "4": return new Position(1,0);
+            case "5": return new Position(1,1);
+            case "6": return new Position(1,2);
+            case "7": return new Position(2,0);
+            case "8": return new Position(2,1);
+            case "9": return new Position(2,2);
             default: return null;
         }
     }
-    public void TurnEvents(Board Gameboard){
+    public void TurnEvents(Board Gameboard) throws IOException{
         PlayerTurn = true;
         System.out.println(Name+"!. It is your turn.");
         Position position = GetPosition();
